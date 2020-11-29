@@ -2,7 +2,7 @@
 
 ## Live version
 
-[Live APP](https://alec-react-weather-app.netlify.app)
+[View Live APP](https://alec-react-weather-app.netlify.app)
 
 ## Create a file called .env in the root of the folder containing your API key
 
