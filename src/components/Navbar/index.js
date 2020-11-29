@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: "100px",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -19,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar variant="regular">
           <Typography variant="h6" color="inherit">
             React Weather App
