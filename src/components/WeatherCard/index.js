@@ -1,20 +1,17 @@
 import {
   Card,
   CardHeader,
-  CardMedia,
   CardContent,
   CardActions,
   Collapse,
   Avatar,
   IconButton,
   Typography,
-  Divider,
   Grid,
   Box,
-  SvgIcon,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { blue, red } from "@material-ui/core/colors";
+import { blue } from "@material-ui/core/colors";
 import moment from "moment";
 import clsx from "clsx";
 
