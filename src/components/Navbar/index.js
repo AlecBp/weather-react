@@ -22,7 +22,7 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar variant="regular">
           <Typography variant="h6" color="inherit">
-            Photos
+            React Weather App
           </Typography>
           <Box mx={3}>
             <Button onClick={() => history.push("/")} variant="contained">
