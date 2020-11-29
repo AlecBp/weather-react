@@ -7,7 +7,7 @@ import WeatherList from "../../components/WeatherList";
 import { useDebouncedSearch } from "../../hooks/useDebouncedSearch";
 
 const api = {
-  key: process.env.REACT_APP_API_KEY,
+  key: process.env.REACT_APP_API_KEY || process.env.API_KEY,
   base: "http://api.openweathermap.org/data/2.5/",
 };
 
