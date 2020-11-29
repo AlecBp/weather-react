@@ -6,7 +6,7 @@ import PageLayout from "../../components/PageLayout";
 const HomePage = () => {
   return (
     <PageLayout>
-      <Typography variant="h1">React CRUD</Typography>
+      <Typography variant="h1">React Weather App</Typography>
 
       <Box my={3}>
         <Typography variant="h2">Alec Pagliarussi</Typography>
