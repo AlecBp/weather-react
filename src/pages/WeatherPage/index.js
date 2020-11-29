@@ -8,7 +8,7 @@ import { useDebouncedSearch } from "../../hooks/useDebouncedSearch";
 
 const api = {
   key: process.env.REACT_APP_API_KEY || process.env.API_KEY,
-  base: "http://api.openweathermap.org/data/2.5/",
+  base: "https://api.openweathermap.org/data/2.5/",
 };
 
 const getWeatherForecast = (city) =>
