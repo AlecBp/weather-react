@@ -1,10 +1,11 @@
 import { Box, Typography, Button } from "@material-ui/core";
 import React from "react";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import PageLayout from "../../components/PageLayout";
 
 const HomePage = () => {
   return (
-    <Box my={3}>
+    <PageLayout>
       <Typography variant="h1">React CRUD</Typography>
 
       <Box my={3}>
@@ -23,7 +24,7 @@ const HomePage = () => {
           GITHUB
         </Button>
       </Box>
-    </Box>
+    </PageLayout>
   );
 };
 

@@ -1,15 +1,18 @@
-import { Box } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import React from "react";
 import WeatherCard from "../WeatherCard";
 
-const WeatherList = () => {
-  const list = [1, 2, 3, 4];
+const WeatherList = ({ data }) => {
+  console.log(data);
   return (
-    <Box>
-      {list.map((i) => (
-        <WeatherCard key={i} />
-      ))}
-    </Box>
+    <Grid container spacing={5}>
+      {data &&
+        data.map((d, i) => (
+          <Grid key={i} item xs={6}>
+            <WeatherCard data={d} />
+          </Grid>
+        ))}
+    </Grid>
   );
 };
 

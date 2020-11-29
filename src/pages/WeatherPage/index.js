@@ -1,14 +1,61 @@
-import { Box, Typography } from "@material-ui/core";
-import React from "react";
+import { Box, Grid, TextField, Typography } from "@material-ui/core";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import PageLayout from "../../components/PageLayout";
+import Spinner from "../../components/Spinner";
 import WeatherList from "../../components/WeatherList";
+import { useDebouncedSearch } from "../../hooks/useDebouncedSearch";
+
+const api = {
+  key: "48efe645d2614aa1ad2f21fd62654d08",
+  base: "http://api.openweathermap.org/data/2.5/",
+};
+
+const getWeatherForecast = (city) =>
+  new Promise((resolve, reject) => {
+    if (city)
+      axios
+        .get(`${api.base}forecast/daily?q=${city.toLowerCase()}&mode=json&units=metric&cnt=10&appid=${api.key}`)
+        .then((data) => resolve(data.data.list))
+        .catch((err) => reject(err));
+    else resolve([]);
+  });
+
+const useRequestWeatherData = () => useDebouncedSearch((text) => getWeatherForecast(text));
 
 const WeatherPage = () => {
-  const list = [1, 2, 3, 4];
+  const { inputText, setInputText, searchResults } = useRequestWeatherData();
+
+  useEffect(() => {
+    setInputText("Toronto");
+  }, []);
+
   return (
-    <Box>
-      <Typography>Weather List</Typography>
-      <WeatherList />
-    </Box>
+    <PageLayout>
+      <Box>
+        <Typography variant="h2" align="center">
+          Weather Forecast
+        </Typography>
+        <Grid container>
+          <Grid item xs={6}>
+            <Box my={5}>
+              <form onSubmit={(e) => e.preventDefault()}>
+                <TextField
+                  fullWidth
+                  name="city"
+                  label="City"
+                  variant="outlined"
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                />
+              </form>
+            </Box>
+          </Grid>
+        </Grid>
+        {searchResults.loading && <Spinner fullscreen={true} />}
+        {!searchResults.loading && <WeatherList data={searchResults.result} />}
+      </Box>
+    </PageLayout>
   );
 };
 
