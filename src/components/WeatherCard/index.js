@@ -107,8 +107,8 @@ const WeatherCard = ({ data }) => {
             alt="weather icon"
           />
         }
-        title={<Typography variant="h5">{`${weather[0].main}`}</Typography>}
-        subheader={<Typography variant="h6">{moment(new Date(dt * 1000)).format("YYYY-MM-DD")}</Typography>}
+        title={<Typography variant="h5">{moment(new Date(dt * 1000)).format("dddd Do")}</Typography>}
+        subheader={<Typography variant="h6">{`${weather[0].main}`}</Typography>}
       />
 
       <CardContent>
