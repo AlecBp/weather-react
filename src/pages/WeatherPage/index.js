@@ -37,7 +37,7 @@ const WeatherPage = () => {
           Weather Forecast
         </Typography>
         <Grid container>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6} >
             <Box my={5}>
               <form onSubmit={(e) => e.preventDefault()}>
                 <TextField

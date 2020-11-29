@@ -10,7 +10,7 @@ import {
   Grid,
   Box,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { blue } from "@material-ui/core/colors";
 import moment from "moment";
 import clsx from "clsx";
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TempGraph = ({ temp, feelsLike }) => {
+const TempGraph = ({ temp, feelsLike, size }) => {
   const data = [
     { name: "Morning", temp: temp.morn, feelsLike: feelsLike.morn },
     { name: "Day", temp: temp.day, feelsLike: feelsLike.day },
@@ -59,7 +59,17 @@ const TempGraph = ({ temp, feelsLike }) => {
 
   return (
     <Box my={3}>
-      <LineChart width={350} height={200} data={data}>
+      <LineChart
+        margin={{
+          top: 0,
+          right: 20,
+          bottom: 0,
+          left: 0,
+        }}
+        width={size - 20}
+        height={200}
+        data={data}
+      >
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
@@ -73,6 +83,8 @@ const TempGraph = ({ temp, feelsLike }) => {
 
 const WeatherCard = ({ data }) => {
   const classes = useStyles();
+
+  const [width, setWidth] = useState(500);
 
   const {
     clouds,
@@ -93,6 +105,16 @@ const WeatherCard = ({ data }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const graphBox = useRef(null);
+
+  useEffect(() => {
+    if (graphBox.current) setWidth(graphBox.current.offsetWidth);
+  }, [graphBox, expanded]);
+
+  window.addEventListener("resize", () => {
+    if (graphBox.current) setWidth(graphBox.current.offsetWidth);
+  });
 
   return (
     <Card className={classes.root}>
@@ -149,8 +171,8 @@ const WeatherCard = ({ data }) => {
             </Grid>
           </Grid>
 
-          <Box>
-            <TempGraph temp={temp} feelsLike={feelsLike} />
+          <Box ref={graphBox}>
+            <TempGraph size={width} temp={temp} feelsLike={feelsLike} />
           </Box>
 
           <Box my={3}>
