@@ -1,13 +1,13 @@
 import { Box, Grid, TextField, Typography } from "@material-ui/core";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PageLayout from "../../components/PageLayout";
 import Spinner from "../../components/Spinner";
 import WeatherList from "../../components/WeatherList";
 import { useDebouncedSearch } from "../../hooks/useDebouncedSearch";
 
 const api = {
-  key: "48efe645d2614aa1ad2f21fd62654d08",
+  key: process.env.REACT_APP_API_KEY,
   base: "http://api.openweathermap.org/data/2.5/",
 };
 

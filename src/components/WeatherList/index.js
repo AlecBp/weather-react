@@ -3,7 +3,6 @@ import React from "react";
 import WeatherCard from "../WeatherCard";
 
 const WeatherList = ({ data }) => {
-  console.log(data);
   return (
     <Grid container spacing={5}>
       {data &&
