@@ -9,8 +9,7 @@ const HomePage = () => {
       <Typography variant="h1">React Weather App</Typography>
 
       <Box my={3}>
-        <Typography variant="h2">Alec Pagliarussi</Typography>
-        <Typography variant="h2">ID: 101196746</Typography>
+        <Typography variant="h2">By: Alec Pagliarussi</Typography>
       </Box>
 
       <Box my={3}>
